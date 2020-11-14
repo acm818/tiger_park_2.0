@@ -1,0 +1,82 @@
+Create database first 
+
+CREATE DATABASE [TigerPark]
+GO
+
+This code below is for the tables 
+
+USE [TigerPark]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CustomersTbl](
+	[CustomerID] [nchar](10) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NOT NULL,
+	[PhoneNum] [nchar](20) NOT NULL,
+	[Email] [nvarchar](50) NOT NULL,
+	[TeamID] [nchar](10) NOT NULL,
+	[ParkingNum] [nchar](10) NULL,
+ CONSTRAINT [PK_CustomersTbl_1] PRIMARY KEY CLUSTERED 
+(
+	[CustomerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[CustomersTbl]  WITH CHECK ADD  CONSTRAINT [FK_CustomersTbl_Parking] FOREIGN KEY([ParkingNum])
+REFERENCES [dbo].[Parking] ([ParkingNum])
+GO
+
+ALTER TABLE [dbo].[CustomersTbl] CHECK CONSTRAINT [FK_CustomersTbl_Parking]
+GO
+
+ALTER TABLE [dbo].[CustomersTbl]  WITH CHECK ADD  CONSTRAINT [FK_CustomersTbl_TeamTbl] FOREIGN KEY([TeamID])
+REFERENCES [dbo].[TeamTbl] ([TeamID])
+GO
+
+ALTER TABLE [dbo].[CustomersTbl] CHECK CONSTRAINT [FK_CustomersTbl_TeamTbl]
+GO
+
+USE [TigerPark]
+GO
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Parking](
+	[ParkingNum] [nchar](10) NOT NULL,
+	[Location] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_Parking] PRIMARY KEY CLUSTERED 
+(
+	[ParkingNum] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+USE [TigerPark]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TeamTbl](
+	[FirstName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](50) NOT NULL,
+	[TeamID] [nchar](10) NOT NULL,
+ CONSTRAINT [PK_TeamTbl] PRIMARY KEY CLUSTERED 
+(
+	[TeamID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
