@@ -1,55 +1,6 @@
 <?php 
 
 // The following lines connect the page to a database.  If you dont have a database set up comment it out
-
-
-// PDO
-/*
-$servername = "localhost";     // host
-$username = "root";
-$password = "";
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=tiger_park", $username, $password);
-  // set the PDO error mode to exception
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-} catch(PDOException $e) {
-  echo "Connection failed: " . $e->getMessage();
-}
-*/
-
-
-
-
-/*
-$servername = "localhost";
-$username = "root";
-$password = "";
-$db = "tiger_park";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $db);
-
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
-
-
-
-
-$sql = "SELECT * FROM `garage_info`";
-  $result = mysqli_query($sql, $conn);
-
-  $var = array();
-    while ($row = mysqli_fetch_array($result)) {
-  $var[] = $row['name'];
-  }
-*/
-
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -72,7 +23,7 @@ if ($conn->connect_error) {
   $garage[] = $row['name'];
   }
 
-var_dump($garage);
+// var_dump($garage);
 
   $sql = "SELECT * FROM `garage_info`";
   $result = mysqli_query($conn,$sql);
@@ -82,7 +33,7 @@ var_dump($garage);
   $available[] = $row['spaces_taken']; 
   }
 
-var_dump($available);
+// var_dump($available);
 
   $sql = "SELECT * FROM `garage_info`";
   $result = mysqli_query($conn,$sql);
@@ -92,51 +43,124 @@ var_dump($available);
   $totalSpace[] = $row['total_spaces']; 
   }
 
-  var_dump($totalSpace);
+ // var_dump($totalSpace);
 
 
+// Update Glen Garage by +1
+  if (isset($_POST['glenEnter']))
+  {
 
-/*
+    $available[0] += 1;
+    $sql = "UPDATE garage_info SET spaces_taken=$available[0] WHERE id=1";
 
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $db = "tiger_park";
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $db);
-
-  // Check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-  echo "Connected successfully";
-
-*/
-
-
-
-
-// Functions
-
-
-  
-
-  /*
-
-  $sql = "SELECT id, fname, lname FROM test";
-  $result = mysqli_query($conn, $sql);
-
-  if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-      echo "id: " . $row["id"]. " - Name: " . $row["fname"]. " " . $row["lname"]. "<br>";
+    if (mysqli_query($conn, $sql)) {
+      echo "Record updated successfully";
+    } else {
+      echo "Error updating record: " . mysqli_error($conn);
     }
-  } else {
-    echo "0 results";
   }
 
-  */
+// Update Glen Garage by -1  
+
+  if (isset($_POST['glenLeave']))
+  {
+
+    $available[0] -= 1;
+    $sql = "UPDATE garage_info SET spaces_taken=$available[0] WHERE id=1";
+
+    if (mysqli_query($conn, $sql)) {
+      echo "Record updated successfully";
+    } else {
+      echo "Error updating record: " . mysqli_error($conn);
+    }
+  }
+
+// Update Towson Town by +1
+if (isset($_POST['towsonTownEnter']))
+{
+
+  $available[1] += 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[1] WHERE id=2";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
+// Update Towson Town by -1  
+if (isset($_POST['towsonTownLeave']))
+{
+
+  $available[1] -= 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[1] WHERE id=2";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
+
+// Update Union by +1
+if (isset($_POST['unionEnter']))
+{
+
+  $available[2] += 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[2] WHERE id=3";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
+// Update Union by -1  
+if (isset($_POST['unionLeave']))
+{
+
+  $available[2] -= 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[2] WHERE id=3";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
+
+// Update West Village by +1
+if (isset($_POST['westVillageEnter']))
+{
+
+  $available[3] += 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[3] WHERE id=4";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
+// Update West Village by -1  
+if (isset($_POST['westVillageLeave']))
+{
+
+  $available[3] -= 1;
+  $sql = "UPDATE garage_info SET spaces_taken=$available[3] WHERE id=4";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully";
+  } else {
+    echo "Error updating record: " . mysqli_error($conn);
+  }
+}
+
 
 ?>
 
@@ -150,34 +174,45 @@ var_dump($available);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Tiger Park</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <form action="<?php $_PHP_SELF ?>" method="POST">
 
-    <table class="center">
+        <table class="center">
 
-    <tr>
-      <th>Garage</th>
-      <th>Available Space</th>
-    </tr>
-    <tr>
-      <td><?php echo $garage[0];?></td>
-      <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
-    </tr>
-    <tr>
-    <td><?php echo $garage[1];?></td>
-    <td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
-    </tr>
-    <tr>
-      <td><?php echo $garage[2];?></td>
-      <td><?php echo $available[2];?>/<?php echo$totalSpace[2];?></td>
-    </tr>
-    <tr>
-      <td><?php echo $garage[3];?></td>
-      <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
-    </tr>
-  </table>
+        <tr>
+          <th>Garage</th>
+          <th>Available Space</th>
+        </tr>
+        <tr>
+          <td><?php echo $garage[0];?></td>
+          <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
+        </tr>
+        <tr>
+        <td><?php echo $garage[1];?></td>
+        <td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
+        </tr>
+        <tr>
+          <td><?php echo $garage[2];?></td>
+          <td><?php echo $available[2];?>/<?php echo$totalSpace[2];?></td>
+        </tr>
+        <tr>
+          <td><?php echo $garage[3];?></td>
+          <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
+        </tr>
+      </table>
+
+      <button type="submit" name="glenEnter">Glen Enter</button>
+      <button type="submit" name="glenLeave">Glen Leave</button> <br>
+      <button type="submit" name="towsonTownEnter">Towson Town Enter</button>
+      <button type="submit" name="towsonTownLeave">Towson Town Leave</button> <br>
+      <button type="submit" name="unionEnter">Union Enter</button>
+      <button type="submit" name="unionLeave">Union Leave</button> <br>
+      <button type="submit" name="westVillageEnter">West Village Enter</button>
+      <button type="submit" name="westVillageLeave">West Village Leave</button>
+
+    </form>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
