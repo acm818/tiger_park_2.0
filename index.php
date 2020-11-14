@@ -74,9 +74,25 @@ if ($conn->connect_error) {
 
 var_dump($garage);
 
+  $sql = "SELECT * FROM `garage_info`";
+  $result = mysqli_query($conn,$sql);
 
+  $available = array();
+    while ($row = mysqli_fetch_array($result)) {
+  $available[] = $row['spaces_taken']; 
+  }
 
+var_dump($available);
 
+  $sql = "SELECT * FROM `garage_info`";
+  $result = mysqli_query($conn,$sql);
+
+  $totalSpace = array();
+    while ($row = mysqli_fetch_array($result)) {
+  $totalSpace[] = $row['total_spaces']; 
+  }
+
+  var_dump($totalSpace);
 
 
 
@@ -146,16 +162,20 @@ var_dump($garage);
       <th>Available Space</th>
     </tr>
     <tr>
-      <td>Glen</td>
+      <td><?php echo $garage[0];?></td>
+      <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
     </tr>
     <tr>
-    <td>TowsonTown</td>
+    <td><?php echo $garage[1];?></td>
+    <td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
     </tr>
     <tr>
-      <td>Union</td>
+      <td><?php echo $garage[2];?></td>
+      <td><?php echo $available[2];?>/<?php echo$totalSpace[2];?></td>
     </tr>
     <tr>
-      <td>West Village</td>
+      <td><?php echo $garage[3];?></td>
+      <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
     </tr>
   </table>
 
