@@ -177,7 +177,7 @@ if (isset($_POST['westVillageLeave']))
     <title>Tiger Park</title>
   </head>
   <body>
-    <form action="<?php $_PHP_SELF ?>" method="POST">
+    <!--<form action="<?php $_PHP_SELF ?>" method="POST">
 
         <table class="center">
 
@@ -186,20 +186,20 @@ if (isset($_POST['westVillageLeave']))
           <th>Available Space</th>
         </tr>
         <tr>
-          <td><?php echo $garage[0];?></td>
-          <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
+          <td><?php //echo $garage[0];?></td>
+          <td><?php //echo $available[0];?>/<?php //echo $totalSpace[0];?></td>
         </tr>
         <tr>
-        <td><?php echo $garage[1];?></td>
-        <td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
+        <td><?php// echo $garage[1];?></td>
+        <td><?php// echo $available[1];?>/<?php //echo $totalSpace[1];?></td>
         </tr>
         <tr>
-          <td><?php echo $garage[2];?></td>
-          <td><?php echo $available[2];?>/<?php echo$totalSpace[2];?></td>
+          <td><?php //echo $garage[2];?></td>
+          <td><?php// echo $available[2];?>/<?php //echo$totalSpace[2];?></td>
         </tr>
         <tr>
-          <td><?php echo $garage[3];?></td>
-          <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
+          <td><?php //echo $garage[3];?></td>
+          <td><?php// echo $available[3];?>/<?php// echo $totalSpace[3];?></td>
         </tr>
       </table>
 
@@ -212,7 +212,69 @@ if (isset($_POST['westVillageLeave']))
       <button type="submit" name="westVillageEnter">West Village Enter</button>
       <button type="submit" name="westVillageLeave">West Village Leave</button>
 
-    </form>
+    </form>-->
+
+
+
+
+<div class="jumbotron">
+  <h2 class="display-3">Tiger Park</h2>
+  <form action="<?php $_PHP_SELF ?>" method="POST">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Garage</th>
+          <th scope="col">Available Space</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-active">
+          <td><?php echo $garage[0];?></td>
+          <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
+        </tr>
+        <tr class="table-active">
+          <td><?php echo $garage[1];?></td>
+          <td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
+        </tr>
+        <tr class="table-active">
+          <td><?php echo $garage[2];?></td>
+          <td><?php echo $available[2];?>/<?php echo $totalSpace[2];?></td>
+        </tr>
+        <tr class="table-active">
+          <td><?php echo $garage[3];?></td>
+          <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
+        </tr>
+      </tbody>
+  </table>
+
+  <table class="table table-hover">
+    <tr>
+      <td><button type="submit" name="glenEnter" class="btn btn-primary">Glen Enter</button></td>
+      <td><button type="submit" name="glenLeave" class="btn btn-primary">Glen Leave</button></td>
+    </tr>
+    <tr>
+      <td><button type="submit" name="towsonTownEnter" class="btn btn-primary">Towson Town Enter</button></td>
+      <td><button type="submit" name="towsonTownLeave" class="btn btn-primary">Towson Town Leave</button></td>
+    </tr>
+    <tr>
+      <td><button type="submit" name="unionEnter" class="btn btn-primary">Union Enter</button></td>
+      <td><button type="submit" name="unionLeave" class="btn btn-primary">Union Leave</button></td>
+    <tr>
+    <tr>
+      <td><button type="submit" name="westVillageEnter" class="btn btn-primary">West Village Enter</button></td>
+      <td><button type="submit" name="westVillageLeave" class="btn btn-primary">West Village Leave</button></td>
+    <tr>
+  <table>
+
+
+
+  </form>
+
+
+
+
+</div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 

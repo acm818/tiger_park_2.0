@@ -18,22 +18,43 @@ table.center {
 
 <table class="center">
 
-	<tr>
-		<th>Garage</th>
-		<th>Available Space</th>
-	</tr>
-	<tr>
-		<td>Glen</td>
-	</tr>
-	<tr>
-	<td>TowsonTown</td>
-	</tr>
-	<tr>
-		<td>Union</td>
-	</tr>
-	<tr>
-		<td>West Village</td>
-	</tr>
+	<body>
+		<form action="<?php $_PHP_SELF ?>" method="POST">
+	
+			<table class="center">
+	
+			<tr>
+			  <th>Garage</th>
+			  <th>Available Space</th>
+			</tr>
+			<tr>
+			  <td><?php echo $garage[0];?></td>
+			  <td><?php echo $available[0];?>/<?php echo $totalSpace[0];?></td>
+			</tr>
+			<tr>
+			<td><?php echo $garage[1];?></td>
+			<td><?php echo $available[1];?>/<?php echo $totalSpace[1];?></td>
+			</tr>
+			<tr>
+			  <td><?php echo $garage[2];?></td>
+			  <td><?php echo $available[2];?>/<?php echo$totalSpace[2];?></td>
+			</tr>
+			<tr>
+			  <td><?php echo $garage[3];?></td>
+			  <td><?php echo $available[3];?>/<?php echo $totalSpace[3];?></td>
+			</tr>
+		  </table>
+	
+		  <button type="submit" name="glenEnter">Glen Enter</button>
+		  <button type="submit" name="glenLeave">Glen Leave</button> <br>
+		  <button type="submit" name="towsonTownEnter">Towson Town Enter</button>
+		  <button type="submit" name="towsonTownLeave">Towson Town Leave</button> <br>
+		  <button type="submit" name="unionEnter">Union Enter</button>
+		  <button type="submit" name="unionLeave">Union Leave</button> <br>
+		  <button type="submit" name="westVillageEnter">West Village Enter</button>
+		  <button type="submit" name="westVillageLeave">West Village Leave</button>
+	
+		</form>
 </table>
 
 </body>
