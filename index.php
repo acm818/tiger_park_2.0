@@ -177,7 +177,7 @@ if (isset($_POST['westVillageLeave']))
     <title>Tiger Park</title>
   </head>
   <body>
-    <!--<form action="<?php $_PHP_SELF ?>" method="POST">
+    <!--<form action="<?php //$_PHP_SELF ?>" method="POST">
 
         <table class="center">
 
@@ -246,7 +246,9 @@ if (isset($_POST['westVillageLeave']))
         </tr>
       </tbody>
   </table>
-
+  <br>
+  <br>
+  <p>These buttons are only here for the prototype to represent garage sensor data and will be removed in the final product </p>
   <table class="table table-hover">
     <tr>
       <td><button type="submit" name="glenEnter" class="btn btn-primary">Glen Enter</button></td>
